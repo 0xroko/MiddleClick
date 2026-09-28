@@ -40,7 +40,9 @@ MiddleClick/
   Controller+Mouse.swift  — Mouse event (click) callback
   TouchHandler.swift      — Multitouch callback: finger counting, tap detection, middle-click emulation
   Config.swift            — User defaults (fingers, maxTimeDelta, etc.)
+  ClickAction.swift       — What a tap/click sends (middle, ⌘ click, …) and how the event is built
   TrayMenu.swift          — Status bar menu UI
+  ClickActionMenus.swift  — "Tap sends" / "Click sends" submenus under Advanced
   FingerCountControl.swift — The finger count stepper in the menu
   SystemPermissions.swift — Reading system trackpad settings
   GlobalState.swift       — Shared state between touch and mouse callbacks

@@ -107,6 +107,19 @@ defaults write art.ginzburg.MiddleClick allowMoreFingers true
 
 > Default is false, so that the number of fingers is precise
 
+### What a tap or click sends
+
+- Choose what the gesture turns into: `middle`, `shiftMiddle` (⇧ middle click), `command` (⌘ click) or `commandShift` (⌘⇧ click).
+- Taps and clicks are set separately. Both are also in the menu under Advanced → "Tap sends" / "Click sends".
+- Modifier keys you hold during the gesture are kept.
+
+```ps1
+defaults write art.ginzburg.MiddleClick tapAction command
+defaults write art.ginzburg.MiddleClick clickAction shiftMiddle
+```
+
+> Default is middle for both
+
 ### Tapping preferences
 
 #### Max Distance Delta

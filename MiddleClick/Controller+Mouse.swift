@@ -4,7 +4,6 @@ import CoreFoundation
 
 extension Controller {
   private static let state = GlobalState.shared
-  private static let kCGMouseButtonCenter = Int64(CGMouseButton.center.rawValue)
 
   static let mouseEventHandler = CGEventController {
     _, type, event, _ in
@@ -16,16 +15,12 @@ extension Controller {
       state.wasThreeDown = true
       state.threeDown = false
       state.naturalMiddleClickLastTime = Date()
-      event.type = .otherMouseDown
-
-      event.setIntegerValueField(.mouseEventButtonNumber, value: kCGMouseButtonCenter)
+      state.clickAction.rewrite(event, isDown: true)
     }
 
     if state.wasThreeDown && (type == .leftMouseUp || type == .rightMouseUp) {
       state.wasThreeDown = false
-      event.type = .otherMouseUp
-
-      event.setIntegerValueField(.mouseEventButtonNumber, value: kCGMouseButtonCenter)
+      state.clickAction.rewrite(event, isDown: false)
     }
     return returnedEvent
   }

@@ -5,6 +5,7 @@ import AppKit
   private let config = Config.shared
   private var infoItem, tapToClickItem, accessibilityPermissionStatusItem, accessibilityPermissionActionItem, ignoredAppItem, launchAtLoginItem: NSMenuItem!
   private var fingerCountControl: FingerCountControl!
+  private let clickActionMenus = ClickActionMenus()
   private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
   var isStatusItemVisible: Bool {
     get { statusItem.isVisible }
@@ -57,12 +58,8 @@ import AppKit
 
     createMenuAccessibilityPermissionItems(menu)
 
-    ignoredAppItem = menu
-      .addItem(
-        withTitle: "Ignore focused app",
-        action: #selector(ignoreApp),
-        target: self
-      )
+    ignoredAppItem = menu.addItem(
+      withTitle: "Ignore focused app", action: #selector(ignoreApp), target: self)
     menu.addSeparator()
 
     infoItem = menu.addItem(withTitle: "")
@@ -80,6 +77,7 @@ import AppKit
     advancedItem.submenu = advancedMenu
 
     addFingerCountItem(advancedMenu)
+    clickActionMenus.install(in: advancedMenu)
 
     updateTapToClickStatus()
 

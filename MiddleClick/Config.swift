@@ -18,5 +18,8 @@ final class Config: ConfigCore {
 
   @UserDefault var tapToClick = SystemPermissions.getIsSystemTapToClickEnabled
 
+  @UserDefault("tapAction") var tapActionRawValue = ClickAction.middle.rawValue
+  @UserDefault("clickAction") var clickActionRawValue = ClickAction.middle.rawValue
+
   @UserDefault var ignoredAppBundles = Set<String>()
 }
